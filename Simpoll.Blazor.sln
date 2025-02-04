@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simpoll.Blazor", "Simpoll.Blazor\Simpoll.Blazor\Simpoll.Blazor.csproj", "{15DB8B96-C255-4B01-B3E3-ACED3F6EABF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simpoll.Blazor.Client", "Simpoll.Blazor\Simpoll.Blazor.Client\Simpoll.Blazor.Client.csproj", "{A8E6ED16-D4E1-4264-97C7-DAF4ADC5C91D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E359AF55-DF90-4FC4-8DB4-7749E1749E52}"
+	ProjectSection(SolutionItems) = preProject
+		compose.yaml = compose.yaml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15DB8B96-C255-4B01-B3E3-ACED3F6EABF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15DB8B96-C255-4B01-B3E3-ACED3F6EABF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15DB8B96-C255-4B01-B3E3-ACED3F6EABF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15DB8B96-C255-4B01-B3E3-ACED3F6EABF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8E6ED16-D4E1-4264-97C7-DAF4ADC5C91D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8E6ED16-D4E1-4264-97C7-DAF4ADC5C91D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8E6ED16-D4E1-4264-97C7-DAF4ADC5C91D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8E6ED16-D4E1-4264-97C7-DAF4ADC5C91D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

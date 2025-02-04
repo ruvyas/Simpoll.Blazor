@@ -1,0 +1,15 @@
+﻿services:
+  server:
+    image: simpoll.blazor
+    build:
+      context: .
+      dockerfile: Simpoll.Blazor/Simpoll.Blazor/Dockerfile
+    ports:
+      - "5173:8080"
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
