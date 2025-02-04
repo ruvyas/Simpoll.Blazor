@@ -30,6 +30,17 @@ html, body {
 .btn-main{
     background-color: #2645ff;
     color: var(--color-main);
+    border-radius: 3rem;
+    justify-content: center;
+    text-align: center;
+    transition-property: all;
+    transition-duration: 0.2s;
+}
+
+.btn-main:hover{
+    border-radius: .5rem;
+    background-color: #2645ff;
+    color: var(--color-main);
 }
 
 .valid.modified:not([type=checkbox]) {

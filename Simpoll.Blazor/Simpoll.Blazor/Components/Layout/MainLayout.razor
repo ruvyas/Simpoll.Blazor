@@ -1,19 +1,33 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu/>
-    </div>
+<div class="container-fluid bg-grey text-white top-banner">
+    &nbsp;
+</div>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+<div class="container mt-3">
+    <div class="row mt-5 mb-2">
+        <div class="col-11 mx-auto">
+            <div class="row">
+                <div class="col-sm-6 d-flex align-items-end justify-content-center justify-content-sm-start">
+                    <h2 class="fw-bold m-0">
+                        <a href="/" class="text-decoration-none text-black-50">
+                            <svg fill="none" class="mb-2" height="45" viewBox="0 0 24 24" width="45" xmlns="http://www.w3.org/2000/svg"><path d="m8 16v-5m4 5v-8m4 8v-3m-12 3.8v-9.6c0-1.1201 0-1.68016.21799-2.10798.19174-.37632.4977-.68229.87403-.87403.42782-.21799.98788-.21799 2.10798-.21799h9.6c1.1201 0 1.6802 0 2.108.21799.3763.19174.6823.49771.874.87403.218.42782.218.98788.218 2.10798v9.6c0 1.1201 0 1.6802-.218 2.108-.1917.3763-.4977.6823-.874.874-.4278.218-.9879.218-2.108.218h-9.6c-1.1201 0-1.68016 0-2.10798-.218-.37633-.1917-.68229-.4977-.87403-.874-.21799-.4278-.21799-.9879-.21799-2.108z" stroke="#2645FFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+                            Simpoll
+                        </a>
+                    </h2>
+                </div>
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-outline-light"></button>
+                </div>
+            </div>
         </div>
-
-        <article class="content px-4">
-             c
-        </article>
-    </main>
+    </div>
+    
+    <div class="row">
+        <div class="col-11 mx-auto bg-main p-4 shadow-lg rounded">
+            @Body
+        </div>
+    </div>
 </div>
 
 <div id="blazor-error-ui" data-nosnippet>
