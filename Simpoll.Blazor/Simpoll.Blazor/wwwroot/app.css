@@ -3,12 +3,20 @@
     --color-grey: #f0e9e1;
     --color-main-border: #d7cec4;
     --color-text-main: #161417;
+    --color-nav-links: #171417;
 }
 
 html, body {
     font-family: "Poppins", serif;
     font-weight: 400;
     font-style: normal;
+}
+
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
 }
 
 .bg-main{
@@ -53,6 +61,10 @@ html, body {
 
 .validation-message {
     color: #e50000;
+}
+
+.nav-links{
+    color: var(--color-nav-links);
 }
 
 .blazor-error-boundary {

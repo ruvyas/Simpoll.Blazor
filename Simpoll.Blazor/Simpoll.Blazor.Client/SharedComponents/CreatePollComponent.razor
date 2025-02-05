@@ -1,0 +1,42 @@
+@using System.ComponentModel.DataAnnotations
+
+<div>
+    <EditForm Model="_model" OnValidSubmit="CreatePollAsync">
+        <DataAnnotationsValidator />
+        <h4 class="text-main">Create Simple polls fast!</h4>
+        <div class="mb-3">
+            <InputText @bind-Value="_model.Question" class="form-control" placeholder="Enter your Question here!" />
+            <ValidationMessage For="() => _model.Question" />
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-main" disabled="@_isProcessing">
+                @(_isProcessing ? "Creating..." : "Create!")
+            </button>
+        </div>
+    </EditForm>
+</div>
+
+@if (_isProcessing)
+{
+    <CustomSpinner />
+}
+
+@code {
+
+    private readonly CreatePollModel _model = new();
+    private bool _isProcessing;
+
+    private async Task CreatePollAsync()
+    {
+        _isProcessing = true;
+        await Task.Delay(2000);
+
+        _isProcessing = false;
+    }
+    
+    class CreatePollModel
+    {
+        [Required, MaxLength(4056)]
+        public string Question { get; set; }
+    }
+}
