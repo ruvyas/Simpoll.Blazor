@@ -1,6 +1,8 @@
-using Microsoft.EntityFrameworkCore;
+using MongoDB.Driver;
+using Simpoll.Blazor.Client.Interfaces;
 using Simpoll.Blazor.Components;
-using Simpoll.Blazor.Data;
+using Simpoll.Blazor.Endpoints;
+using Simpoll.Blazor.Repositories;
 using Simpoll.Blazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,13 +12,12 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
-// Add mongoDb context
-builder.Services.AddDbContext<PollContext>(options => options.UseMongoDB(
-    builder.Configuration.GetConnectionString("MongoDb") ?? "",
-    "simpollDb"
-    )
+// Add mongoDb
+builder.Services.AddSingleton<IMongoClient, MongoClient>(_ 
+    => new MongoClient(builder.Configuration.GetConnectionString("MongoDb") ?? "")
 );
 
+builder.Services.AddScoped<IPollRepository, PollRepository>();
 builder.Services.AddScoped<IPollService, PollService>();
 
 var app = builder.Build();
@@ -43,5 +44,7 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(Simpoll.Blazor.Client._Imports).Assembly);
+
+app.MapPollEndpoints();
 
 app.Run();

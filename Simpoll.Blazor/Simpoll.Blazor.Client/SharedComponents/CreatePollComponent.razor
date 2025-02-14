@@ -1,4 +1,5 @@
 @using System.ComponentModel.DataAnnotations
+@inject IPollService PollService
 
 <div>
     <EditForm Model="_model" OnValidSubmit="CreatePollAsync">
@@ -29,7 +30,13 @@
     private async Task CreatePollAsync()
     {
         _isProcessing = true;
-        await Task.Delay(2000);
+        var dto = new PollDto
+        {
+            Question = _model.Question,
+            Options = [new PollOptionDto { OptionText = "Blue" }, new PollOptionDto { OptionText = "Red" }]
+        };
+
+        // var pollId = await PollService.CreatePollAsync(dto);
 
         _isProcessing = false;
     }
@@ -37,6 +44,6 @@
     class CreatePollModel
     {
         [Required, MaxLength(4056)]
-        public string Question { get; set; }
+        public string? Question { get; set; }
     }
 }

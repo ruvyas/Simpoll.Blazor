@@ -1,37 +1,34 @@
-using Microsoft.EntityFrameworkCore;
 using MongoDB.Bson;
-using Simpoll.Blazor.Data;
+using Simpoll.Blazor.Client.Dtos;
+using Simpoll.Blazor.Client.Interfaces;
 using Simpoll.Blazor.Data.Models;
+using Simpoll.Blazor.Extensions;
+using Simpoll.Blazor.Repositories;
 
 namespace Simpoll.Blazor.Services;
 
-public class PollService(PollContext pollContext) : IPollService
+public class PollService(IPollRepository pollRepository) : IPollService
 {
-    public IEnumerable<Poll> GetPolls()
+    public async Task<string> CreatePollAsync(PollDto poll)
     {
-        return pollContext.Polls.OrderBy(c => c.Id).AsNoTracking().AsEnumerable();
+        Poll pollEntity = new()
+        {
+            Question = poll.Question ?? throw new InvalidOperationException(),
+            Options = (poll.Options ?? throw new InvalidOperationException()).Select(x => new PollOption
+            {
+                OptionText = x.OptionText ?? throw new InvalidOperationException()
+            }).ToList()
+        };
+        return (await pollRepository.Create(pollEntity)).ToString();
     }
 
-    public Poll? GetPollById(ObjectId id)
+    public async Task<PollDto> GetPollById(string objectId)
     {
-        return pollContext.Polls.FirstOrDefault(c  => c.Id == id);
+        PollDto dto = new();
+        var poll = await pollRepository.Get(ObjectId.Parse(objectId));
+        return poll is null ? dto : poll.ToPollDto();
     }
 
-    public void AddPoll(Poll poll)
-    {
-        pollContext.Polls.Add(poll);
-        pollContext.ChangeTracker.DetectChanges();
-        Console.WriteLine(pollContext.ChangeTracker.DebugView.LongView);
-        pollContext.SaveChanges();
-    }
-
-    public void EditPoll(Poll poll)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void DeletePoll(Poll poll)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<IEnumerable<PollDto>> GetAllPolls()
+        => (await pollRepository.GetAll()).Select(x => x.ToPollDto());
 }
